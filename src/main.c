@@ -9,7 +9,7 @@
 #define ALACRITTY_DIR "~/.config/alacritty"
 #define ALACRITTY_CONF "/Users/adi/.config/alacritty/alacritty.toml"
 
-char themes[256][32];
+char themes[256][64];
 int theme_idx = 0;
 int idx = 0;
 
@@ -60,13 +60,18 @@ int main(void)
     /* Interface */
     initscr();
     noecho();
+    curs_set(0);
 
     char ch;
+
+    int maxY = getmaxy(stdscr);
+    int left = 0, right = maxY - 1;
 
     while (1)
     {
 
-        for (int i = 0; i < theme_idx; i++)
+        /* Draw */
+        for (int i = left; i <= right; i++)
         {
             if (i == idx)
             {
@@ -79,6 +84,7 @@ int main(void)
             printw("  %s  \n", themes[i]);
         }
 
+        /* Handle Input */
         ch = getch();
         if (ch == 'q')
         {
@@ -87,17 +93,47 @@ int main(void)
 
         if (ch == 'j')
         {
-            idx++;
+            if (idx == theme_idx - 1)
+            {
+                left = 0;
+                right = maxY - 1;
+                idx = left;
+            }
+            else
+            {
+
+                idx++;
+                if (idx == right)
+                {
+                    left++;
+                    right++;
+                }
+            }
         }
         else if (ch == 'k')
         {
-            idx--;
+            if (idx == 0)
+            {
+                right = theme_idx - 1;
+                left = right - maxY + 1;
+                idx = right;
+            }
+            else
+            {
+                idx--;
+                if (idx == left)
+                {
+                    left--;
+                    right--;
+                }
+            }
         }
         else if (ch == '\n')
         {
             changeTheme(themes[idx]);
         }
 
+        /* Refresh */
         clear();
     }
 
