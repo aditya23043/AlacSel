@@ -33,6 +33,15 @@ make
 
 * Edit the defines inside `AlacSel/src/main.h` to tweak the alacritty configuration file path and directory
 
+## Key Bindings
+
+| Key      | Description                 |
+| -------- | --------------------        |
+| `j`      | move down                   |
+| `k`      | move up                     |
+| `Enter`  | apply theme under selection |
+| `q`      | quit                        |
+
 ## Images
 
 <img width="3420" height="2138" alt="Screenshot 2025-12-19 at 11 40 50 AM" src="https://github.com/user-attachments/assets/4166bbc9-15d1-4475-8c18-2342121d1c43" />
@@ -40,4 +49,3 @@ make
 <img width="3420" height="2146" alt="Screenshot 2025-12-19 at 11 40 59 AM" src="https://github.com/user-attachments/assets/5960cc5a-7d0b-481f-bf3e-3bd9b9878a50" />
 
 <img width="3420" height="2137" alt="Screenshot 2025-12-19 at 11 40 23 AM" src="https://github.com/user-attachments/assets/8f6c20bd-7b8e-445d-a4ff-6f28beb4f8a0" />
-
