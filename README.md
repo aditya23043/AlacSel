@@ -1,5 +1,4 @@
-<img width="3420" height="2224" alt="Screenshot 2025-12-19 at 11 40 33 AM" src="https://github.com/user-attachments/assets/132bdc29-c705-4b1a-b302-df77bccbcb11" />
-
+<img width="3420" height="2137" alt="Screenshot 2025-12-19 at 11 40 33 AM" src="https://github.com/user-attachments/assets/0c2b68cc-8e73-4ed5-8bd7-962b20f5dc68" />
 
 # Alacritty Theme Selector
 
@@ -36,9 +35,9 @@ make
 
 ## Images
 
-<img width="3420" height="2224" alt="Screenshot 2025-12-19 at 11 40 23 AM" src="https://github.com/user-attachments/assets/473d25de-fc4d-42a6-b80a-2f41514a480e" />
+<img width="3420" height="2138" alt="Screenshot 2025-12-19 at 11 40 50 AM" src="https://github.com/user-attachments/assets/4166bbc9-15d1-4475-8c18-2342121d1c43" />
 
-<img width="3420" height="2224" alt="Screenshot 2025-12-19 at 11 40 50 AM" src="https://github.com/user-attachments/assets/0f5339db-7695-46e4-a07f-02c882a19c40" />
+<img width="3420" height="2146" alt="Screenshot 2025-12-19 at 11 40 59 AM" src="https://github.com/user-attachments/assets/5960cc5a-7d0b-481f-bf3e-3bd9b9878a50" />
 
-<img width="3420" height="2224" alt="Screenshot 2025-12-19 at 11 40 59 AM" src="https://github.com/user-attachments/assets/23a5aca0-78c3-40ba-92ae-a6a55fd8a9b0" />
+<img width="3420" height="2137" alt="Screenshot 2025-12-19 at 11 40 23 AM" src="https://github.com/user-attachments/assets/8f6c20bd-7b8e-445d-a4ff-6f28beb4f8a0" />
 
