@@ -6,34 +6,21 @@
 #include <sys/dirent.h>
 #include <unistd.h>
 
-#define ALACRITTY_DIR "~/.config/alacritty"
-#define ALACRITTY_CONF "/Users/adi/.config/alacritty/alacritty.toml"
+#include "main.h"
+
+void changeTheme(char *newTheme);
+void get_home(char *buffer, int size);
+void expand_tilde(char *path, char *buf, int buflen);
 
 char themes[256][64];
 int theme_idx = 0;
 int idx = 0;
 
-void changeTheme(char *newTheme);
-void get_home(char *buffer, int size);
-
-int main(void)
+int main(void) /* <<< */
 {
 
     char alacrittyDir[64] = {0};
-    char *ptr;
-
-    // expand tilde to home dir
-    if ((ptr = strchr(ALACRITTY_DIR, '~')) != NULL)
-    {
-        char homeDir[64] = {0};
-        get_home(homeDir, sizeof(homeDir));
-
-        snprintf(alacrittyDir, sizeof(alacrittyDir), "%s%s", homeDir, ptr + 1);
-    }
-    else
-    {
-        snprintf(alacrittyDir, sizeof(alacrittyDir), "%s", ALACRITTY_DIR);
-    }
+    expand_tilde(ALACRITTY_DIR, alacrittyDir, sizeof(alacrittyDir));
 
     DIR *dir = opendir(alacrittyDir);
     struct dirent *entry;
@@ -140,13 +127,15 @@ int main(void)
     endwin();
 
     return 0;
-}
+} /* >>> */
 
-void changeTheme(char *newTheme)
+void changeTheme(char *newTheme) /* <<< */
 {
 
-    printf("%s\n", newTheme);
-    FILE *fp = fopen(ALACRITTY_CONF, "r");
+    char alacrittyConf[64] = {0};
+    expand_tilde(ALACRITTY_CONF, alacrittyConf, sizeof(alacrittyConf));
+
+    FILE *fp = fopen(alacrittyConf, "r");
     FILE *temp_fp = fopen("theme-temp", "w");
     if (fp == NULL)
     {
@@ -178,10 +167,10 @@ void changeTheme(char *newTheme)
     fclose(temp_fp);
     fclose(fp);
 
-    rename("theme-temp", ALACRITTY_CONF);
-}
+    rename("theme-temp", alacrittyConf);
+} /* >>> */
 
-void get_home(char *buffer, int size)
+void get_home(char *buffer, int size) /* <<< */
 {
     FILE *homeCmd = popen("echo $HOME", "r");
     fread(buffer, size, 1, homeCmd);
@@ -192,4 +181,21 @@ void get_home(char *buffer, int size)
     {
         *ret = '\0';
     }
-}
+} /* >>> */
+
+void expand_tilde(char *path, char *buf, int buflen) /* <<< */
+{
+    char *ptr = NULL;
+
+    if ((ptr = strchr(path, '~')) != NULL)
+    {
+        char homeDir[64] = {0};
+        get_home(homeDir, sizeof(homeDir));
+
+        snprintf(buf, buflen, "%s%s", homeDir, ptr + 1);
+    }
+    else
+    {
+        snprintf(buf, buflen, "%s", path);
+    }
+} /* >>> */
